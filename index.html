@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>观时 · 从一个时刻开始</title><link rel="stylesheet" href="./style.css"><script type="module" src="./app.js"></script></head>
+<body>
+<a href="#main" class="skip-link">跳至主要内容</a>
+<header class="mobile-header"><a class="mobile-brand" href="#chart">观时 <span>CME</span></a><button type="button" id="menu-toggle" aria-label="打开功能菜单" aria-controls="sidebar" aria-expanded="false"><img src="./assets/icons/menu-2.svg" alt=""></button></header>
+<aside class="sidebar" id="sidebar" aria-label="应用导航">
+<a class="brand" href="#chart" aria-label="观时首页">观时<span>C M E</span></a>
+<nav class="mode-nav" aria-label="功能选择"><a href="#chart" data-mode="chart"><img src="./assets/icons/user.svg" alt=""><span>个人解读</span></a><a href="#pair" data-mode="pair"><img src="./assets/icons/heart.svg" alt=""><span>双人合婚</span></a><a href="#liunian" data-mode="liunian"><img src="./assets/icons/calendar.svg" alt=""><span>流年观察</span></a></nav>
+<nav class="secondary-nav" aria-label="更多探索"><button type="button" data-tool="charts"><img src="./assets/icons/layout-grid.svg" alt=""><span>四种排盘<small>八字 / 紫微 / 奇门 / 梅花</small></span></button><button type="button" data-tool="personality"><img src="./assets/icons/star.svg" alt=""><span>星座与 MBTI</span></button></nav>
+<div class="sidebar-bottom"><p><img src="./assets/icons/shield-lock.svg" alt="">本地运行，资料留在本机</p><button type="button" id="clear">清空本页资料</button><span>GUANSHI · LOCAL EDITION</span></div>
+</aside>
+<main id="main">
+<div class="breadcrumb"><span>观时</span><span aria-hidden="true">/</span><span id="page-name">个人解读</span></div>
+<section class="hero"><h1 id="page-title">认识自己，从一个时刻开始。</h1><p class="intro" id="page-intro">输入出生信息，生成四种盘面与传统解读。每条内容都能查看依据，供自我理解与参考。</p></section>
+<section class="input-panel" aria-label="出生信息"><div class="section-top"><h2 id="form-title">出生信息</h2><button type="button" class="text-button" id="example">填入示例</button></div>
+<form id="birth-form"><div id="people"></div><div class="form-action"><button class="primary" id="submit" type="submit"><span>生成解读</span><img src="./assets/icons/arrow-right.svg" alt=""></button></div>
+<details class="settings"><summary>更多设置 <span>换日约定、观察年份</span></summary><div class="setting-fields"><label>流派与换日约定<select name="profile" id="profiles"><option value="default-v1">默认 · 23:00 换日</option><option value="midnight-day-boundary-v1">午夜 · 00:00 换日</option></select></label><div id="year-options"><label>观察年份<input name="year" type="number" min="1901" max="2100" value="2026" required></label><label>节气月<select name="month"><option value="">全年</option><option value="1">寅月 · 立春起</option><option value="2">卯月 · 惊蛰起</option><option value="3">辰月 · 清明起</option><option value="4">巳月 · 立夏起</option><option value="5">午月 · 芒种起</option><option value="6">未月 · 小暑起</option><option value="7">申月 · 立秋起</option><option value="8">酉月 · 白露起</option><option value="9">戌月 · 寒露起</option><option value="10">亥月 · 立冬起</option><option value="11">子月 · 大雪起</option><option value="12">丑月 · 小寒起</option></select></label></div></div><p class="hint">使用出生地民用时间，不自动修正真太阳时。四柱以立春换年、节气换月；奇门为出生时刻局，梅花采用农历年月日时起卦。</p></details><p class="form-note">请确认出生地时区；时刻未知时，先补充资料。</p></form><p id="error" role="alert" hidden></p></section>
+<div id="status" role="status" aria-live="polite"></div>
+<section class="gallery" id="explore-gallery" aria-label="选择探索主题">
+<article><button class="gallery-image" type="button" data-launch="bazi" aria-label="开始八字解读"><img src="./assets/bazi-ink.png" alt="素白书页上的墨色圆环，象征时间与记录" width="720" height="650"></button><p class="gallery-label">BAZI</p><h2>八字</h2><p class="gallery-description">从年、月、日、时四柱，阅读五行与十神，理解传统文化中的个人与相处议题。</p><button class="gallery-link" type="button" data-launch="bazi">开始解读<img src="./assets/icons/arrow-right.svg" alt=""></button></article>
+<article><button class="gallery-image" type="button" data-launch="meihua" aria-label="开始梅花卦象阅读"><img src="./assets/meihua-plum.png" alt="素墙前一枝白梅与石质花器" width="720" height="650"></button><p class="gallery-label">MEIHUA</p><h2>梅花</h2><p class="gallery-description">以出生时刻起卦，展开本卦、互卦与变卦，借体用关系提供一种思考角度。</p><button class="gallery-link" type="button" data-launch="meihua">阅读卦象<img src="./assets/icons/arrow-right.svg" alt=""></button></article>
+<article><button class="gallery-image" type="button" data-launch="pair" aria-label="开始双人合婚"><img src="./assets/relationship-discs.png" alt="彼此交叠的两块半透明圆形石材" width="720" height="650"></button><p class="gallery-label">RELATIONSHIP</p><h2>双人关系</h2><p class="gallery-description">并列两个人的命盘与自报偏好，找到彼此可以讨论的支持、边界与沟通方式。</p><button class="gallery-link" type="button" data-launch="pair">开始合婚<img src="./assets/icons/arrow-right.svg" alt=""></button></article>
+</section>
+<section class="output-panel" aria-label="计算结果" hidden><div id="result"></div></section>
+<footer><p>传统文化解读，仅供自我理解与参考，不构成对现实人生的科学预测。</p><button type="button" id="method-button">了解计算与解读约定<img src="./assets/icons/arrow-right.svg" alt=""></button></footer>
+<dialog id="method-dialog"><div class="dialog-head"><h2>每一份解读，都有边界。</h2><button type="button" id="close-method" aria-label="关闭说明"><img src="./assets/icons/x.svg" alt=""></button></div><p>排盘是指定流派和时间约定下的确定性计算。八字、梅花、星座提供传统或文化象义；生活化建议为项目自编，不是未来事件的科学预测。</p><p>紫微部分规则需要传统排盘性别；MBTI 仅使用你主动选择的已有类型，不从出生信息推断。星座采用固定日期简表，交界保留候选。</p><p>每条解读可展开查看输入值、规则编号、来源与审核说明。资料仅保留在本页内存，清空或刷新即可移除；主动导出的文件由你自行保管。</p><p class="hint">本版尚未审定完整格局、喜用神与大运。未支持的规则不会自动补齐。</p></dialog>
+</main></body></html>
